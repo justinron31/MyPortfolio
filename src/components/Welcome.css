@@ -1,0 +1,95 @@
+.wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.message {
+  text-align: center;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 3rem;
+  text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.message.hovered {
+  color: var(--black);
+}
+
+.message-text {
+  opacity: 0;
+  transform: translateY(20px);
+  left: 0;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  text-wrap: nowrap;
+  position: absolute;
+}
+
+.message-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.buttonWrapper {
+  margin: 10px;
+  margin-top: 100px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none; /* Disable interaction while not visible */
+}
+
+.buttonWrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.welcomeButton {
+  padding: 15px 30px;
+  border-radius: 15px;
+  border: none;
+  font-weight: 800;
+  letter-spacing: 0.07cm;
+  background-color: var(--darkBrown);
+  color: var(--peach);
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  animation: pulse 1.5s infinite;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.welcomeButton:hover {
+  background-color: var(--brown);
+  color: var(--white);
+  cursor: pointer;
+  scale: 1.1;
+  border: 3px solid var(--peach);
+  color: var(--darkBrown);
+  font-weight: 900;
+}
+
+.welcomeButton:disabled {
+  background-color: var(--darkGray);
+  cursor: not-allowed;
+}
+
+/* pulse animation  */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
