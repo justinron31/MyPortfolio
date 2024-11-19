@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
-import "./Welcome.css";
+import { useNavigate } from "react-router-dom";
+import "../css/Welcome.css";
 
 function Welcome() {
-  const [currentIndex, setCurrentIndex] = useState(-1); // Tracks the currently visible <p>
-  const [isHovered, setIsHovered] = useState(false); // State for button hover
-  const [isButtonVisible, setIsButtonVisible] = useState(false); // Track button visibility
+  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [lastParagraphContent, setLastParagraphContent] = useState(
     "Click the button below."
-  ); // State for the last paragraph content
+  );
+  const navigate = useNavigate(); // Initialize navigate
+
   const paragraphs = [
     "Welcome!",
     "I am Ron.",
     "A software Engineer",
     "If you want to know more about me",
-    lastParagraphContent, // Use the state variable for the last paragraph content
+    lastParagraphContent,
   ];
 
   useEffect(() => {
@@ -24,27 +27,24 @@ function Welcome() {
       return () => clearTimeout(timeout);
     }
 
-    // Set the button visible when the last paragraph is shown
     if (currentIndex >= paragraphs.length - 1) {
       setIsButtonVisible(true);
     }
   }, [currentIndex, paragraphs.length]);
 
-  const handleButtonClick = () => {
-    // Reload the page when the button is clicked
-    window.location.reload();
-  };
-
-  // Effect to change body background color on hover
   useEffect(() => {
     if (isHovered) {
-      document.body.style.backgroundColor = "var(--peach)"; // Change background color on hover
-      setLastParagraphContent("Click that shit mah boi."); // Change the content of the last paragraph on hover
+      document.body.style.backgroundColor = "var(--peach)";
+      setLastParagraphContent("Click that shit mah boi.");
     } else {
-      document.body.style.backgroundColor = "var(--olive)"; // Reset background color when hover ends
-      setLastParagraphContent("Click the button below."); // Reset the content of the last paragraph
+      document.body.style.backgroundColor = "var(--olive)";
+      setLastParagraphContent("Click the button below.");
     }
   }, [isHovered]);
+
+  const handleButtonClick = () => {
+    navigate("/FirstPage"); // Navigate to the main page
+  };
 
   return (
     <div className="wrapper">
@@ -74,8 +74,8 @@ function Welcome() {
           className="welcomeButton"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          disabled={!isButtonVisible} // Disable the button when not visible
-          onClick={handleButtonClick} // Add onClick handler
+          disabled={!isButtonVisible}
+          onClick={handleButtonClick}
         >
           Explore
         </button>
