@@ -10,7 +10,7 @@ function Welcome() {
   ); // State for the last paragraph content
   const paragraphs = [
     "Welcome!",
-    "I am Ron",
+    "I am Ron.",
     "A software Engineer",
     "If you want to know more about me",
     lastParagraphContent, // Use the state variable for the last paragraph content
