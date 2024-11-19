@@ -12,7 +12,7 @@ function Welcome() {
     "Welcome!",
     "I am Ron",
     "A software Engineer",
-    "If you want to know more",
+    "If you want to know more about me",
     lastParagraphContent, // Use the state variable for the last paragraph content
   ];
 
